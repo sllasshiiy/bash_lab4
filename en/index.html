@@ -1,9 +1,9 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang=\"en\">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Version</title>
+    <meta charset=\"UTF-8\">
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+    <title>English Version - Laboratory Work</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -24,18 +24,50 @@
             color: #0366d6;
             font-weight: bold;
         }
+        .task-list {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .version-info {
+            background: #e7f3ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
     </style>
 </head>
 <body>
     <nav>
-        <a href="../index.html">Home</a>
-        <a href="../ru/index.html">Russian Version</a>
-        <a href="index.html">English Version</a>
+        <a href=\"../index.html\">Home</a>
+        <a href=\"../ru/index.html\">Russian Version</a>
+        <a href=\"index.html\">English Version</a>
     </nav>
     
     <h1>English Version of the Site</h1>
-    <p>This is the English version of the web application.</p>
-    <p>Version: <strong id="version">v1.0.0</strong></p>
+    
+    <div class=\"version-info\">
+        <strong>Version:</strong> <span id=\"version\">v1.0.0</span>
+    </div>
+    
+    <p>This is the English version of the web application for laboratory work on CI/CD setup with GitHub Pages.</p>
+    
+    <div class=\"task-list\">
+        <h2>Laboratory Work Tasks:</h2>
+        <ul>
+            <li>Create a multilingual website</li>
+            <li>Configure GitHub Pages</li>
+            <li>Implement CI/CD pipeline</li>
+            <li>Ensure versioning</li>
+        </ul>
+    </div>
+    
+    <h2>Current Status:</h2>
+    <p>✅ Multilingual website structure created</p>
+    <p>🔄 GitHub Pages configuration in progress...</p>
+    <p>🔄 CI/CD pipeline added</p>
+    <p>⏳ Versioning will be tested when creating a release</p>
     
     <script>
         const path = window.location.pathname;
