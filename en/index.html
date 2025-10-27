@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Version</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        nav {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        nav a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: #0366d6;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="../ru/index.html">Russian Version</a>
+        <a href="index.html">English Version</a>
+    </nav>
+    
+    <h1>English Version of the Site</h1>
+    <p>This is the English version of the web application.</p>
+    <p>Version: <strong id="version">v1.0.0</strong></p>
+    
+    <script>
+        const path = window.location.pathname;
+        const versionMatch = path.match(/v(\d+\.\d+\.\d+)/);
+        if (versionMatch) {
+            document.getElementById('version').textContent = versionMatch[0];
+        }
+    </script>
+</body>
+</html>
