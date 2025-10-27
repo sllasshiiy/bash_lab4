@@ -1,8 +1,8 @@
 ﻿<!DOCTYPE html>
-<html lang="ru">
+<html lang=\"ru\">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset=\"UTF-8\">
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
     <title>Лабораторная работа 4 - GitHub Pages</title>
     <style>
         body {
@@ -24,27 +24,86 @@
             color: #0366d6;
             font-weight: bold;
         }
-        h1 {
-            color: #333;
+        .task-list {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .versions-section {
+            background: #e7f3ff;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .version-item {
+            margin: 8px 0;
+            padding: 8px;
+            background: white;
+            border-radius: 4px;
+            border-left: 4px solid #0366d6;
         }
     </style>
 </head>
 <body>
     <nav>
-        <a href="index.html">Главная</a>
-        <a href="ru/index.html">Русская версия</a>
-        <a href="en/index.html">English Version</a>
+        <a href=\"index.html\">Главная</a>
+        <a href=\"ru/index.html\">Русская версия</a>
+        <a href=\"en/index.html\">English Version</a>
+        <a href=\"#versions\">Все версии</a>
     </nav>
     
-    <h1>Лабораторная работа 4: GitHub Pages</h1>
-    <p>Это главная страница веб-приложения для лабораторной работы.</p>
+    <h1>Лабораторная работа 4: GitHub Pages + CI/CD</h1>
     
-    <h2>Задачи:</h2>
-    <ul>
-        <li>Создать многоязычный сайт</li>
-        <li>Настроить GitHub Pages</li>
-        <li>Реализовать CI/CD пайплайн</li>
-        <li>Обеспечить версионирование</li>
-    </ul>
+    <div class=\"task-list\">
+        <h2>Задачи лабораторной работы:</h2>
+        <ol>
+            <li>Создать русскоязычную версию сайта (ru/index.html)</li>
+            <li>Создать англоязычную версию сайта (en/index.html)</li>
+            <li>Создать главную страницу с навигацией (index.html)</li>
+            <li>Настроить GitHub Pages из ветки gh-pages</li>
+            <li>Реализовать CI/CD для автоматического деплоя при релизах</li>
+            <li>Обеспечить доступность прошлых версий сайта</li>
+        </ol>
+    </div>
+    
+    <div class=\"versions-section\">
+        <h2 id=\"versions\"> Доступные версии сайта</h2>
+        <p>Каждая версия сохраняется в отдельной папке и остается доступной:</p>
+        <div id=\"versions-list\">
+            <p>Загрузка списка версий...</p>
+        </div>
+        <p><strong>Формат URL:</strong> https://sllasshiiy.github.io/bash_lab4/v1.0.0/</p>
+    </div>
+
+    <script>
+        // Загружаем список релизов из GitHub API
+        async function loadReleases() {
+            try {
+                const response = await fetch('https://api.github.com/repos/sllasshiiy/bash_lab4/releases');
+                const releases = await response.json();
+                
+                const versionsList = document.getElementById('versions-list');
+                
+                if (releases && releases.length > 0) {
+                    versionsList.innerHTML = releases.map(release => 
+                        <div class=\"version-item\">
+                            <strong>🔖 <a href=\"/bash_lab4//\"></a></strong><br>
+                            <em></em><br>
+                            📅 
+                        </div>
+                    ).join('');
+                } else {
+                    versionsList.innerHTML = '<p>Пока нет созданных релизов. Создайте первый релиз в GitHub!</p>';
+                }
+            } catch (error) {
+                document.getElementById('versions-list').innerHTML = 
+                    '<p>Ошибка загрузки списка версий. Убедитесь что репозиторий публичный.</p>';
+            }
+        }
+        
+        // Загружаем список версий при открытии страницы
+        document.addEventListener('DOMContentLoaded', loadReleases);
+    </script>
 </body>
 </html>
