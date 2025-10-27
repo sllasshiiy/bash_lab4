@@ -3,90 +3,35 @@
 on:
   release:
     types: [published]
-  workflow_dispatch:
 
 permissions:
   contents: read
   pages: write
   id-token: write
 
-concurrency:
-  group: \"pages\"
-  cancel-in-progress: false
-
 jobs:
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    
     runs-on: ubuntu-latest
-    
     steps:
-      # Шаг 1: Получение кода
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      
-      # Шаг 2: Настройка Pages
+
       - name: Setup Pages
         uses: actions/configure-pages@v3
-      
-      # Шаг 3: Подготовка структуры с версионированием
-      - name: Prepare versioned deployment
+
+      - name: Create version folder
         run: |
-          # Создаем папку для текущей версии релиза
           mkdir -p ./${{ github.event.release.tag_name }}
-          
-          # Копируем все файлы в папку версии
           cp -r *.html ./${{ github.event.release.tag_name }}/
           cp -r ru/ ./${{ github.event.release.tag_name }}/
           cp -r en/ ./${{ github.event.release.tag_name }}/
           cp .nojekyll ./${{ github.event.release.tag_name }}/
-          
-          # Создаем index.html для навигации по версиям
-          echo '<!DOCTYPE html>
-          <html lang=\"ru\">
-          <head>
-              <meta charset=\"UTF-8\">
-              <title>Доступные версии</title>
-              <style>
-                  body { font-family: Arial, sans-serif; margin: 40px; }
-                  .version-list { margin: 20px 0; }
-                  .version-item { margin: 10px 0; padding: 10px; background: #f5f5f5; border-radius: 5px; }
-              </style>
-          </head>
-          <body>
-              <h1>Доступные версии сайта</h1>
-              <div class=\"version-list\" id=\"versions\">
-                  <p>Загрузка списка версий...</p>
-              </div>
-              <script>
-                  fetch(\"https://api.github.com/repos/sllasshiiy/bash_lab4/releases\")
-                      .then(r => r.json())
-                      .then(releases => {
-                          const list = document.getElementById(\"versions\");
-                          list.innerHTML = releases.map(r => 
-                              <div class=\"version-item\">
-                                  <strong><a href=\"/bash_lab4/ + r.tag_name + '/\">' + r.tag_name + '</a></strong><br>' + 
-                                  (r.name || \"Без названия\") + \" - \" + new Date(r.published_at).toLocaleDateString(\"ru-RU\") +
-                              '</div>'
-                          ).join(\"\");
-                      });
-              </script>
-          </body>
-          </html>' > index.html
-          
-          echo \"✅ Подготовлена версия: ${{ github.event.release.tag_name }}\"
-      
-      # Шаг 4: Загрузка артефакта
+          echo "Version ${{ github.event.release.tag_name }} prepared"
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
           path: .
-      
-      # Шаг 5: Деплой
+
       - name: Deploy to GitHub Pages
-        id: deployment
         uses: actions/deploy-pages@v2
