@@ -43,14 +43,19 @@
             border-radius: 4px;
             border-left: 4px solid #0366d6;
         }
+        .error {
+            background: #ffe6e6;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
     </style>
 </head>
 <body>
     <nav>
-        <a href="index.html">Главная</a>
-        <a href="ru/index.html">Русская версия</a>
-        <a href="en/index.html">English Version</a>
-        <a href="#versions">Все версии</a>
+        <a href="/bash_lab4/index.html">Главная</a>
+        <a href="/bash_lab4/ru/index.html">Русская версия</a>
+        <a href="/bash_lab4/en/index.html">English Version</a>
     </nav>
     
     <h1>Лабораторная работа 4: GitHub Pages + CI/CD</h1>
@@ -67,13 +72,22 @@
         </ol>
     </div>
     
+    <div class="error">
+        <h2>Внимание: Проблемы с навигацией</h2>
+        <p>Если ссылки не работают, используйте прямые URL:</p>
+        <ul>
+            <li><a href="https://sllasshiiy.github.io/bash_lab4/">Главная страница</a></li>
+            <li><a href="https://sllasshiiy.github.io/bash_lab4/ru/">Русская версия</a></li>
+            <li><a href="https://sllasshiiy.github.io/bash_lab4/en/">Английская версия</a></li>
+        </ul>
+    </div>
+
     <div class="versions-section">
-        <h2 id="versions">Доступные версии сайта</h2>
-        <p>Каждая версия сохраняется в отдельной папке и остается доступной:</p>
+        <h2>Доступные версии сайта</h2>
+        <p>Для тестирования версионирования необходимо создать релиз в GitHub.</p>
         <div id="versions-list">
             <p>Загрузка списка версий...</p>
         </div>
-        <p><strong>Формат URL:</strong> https://sllasshiiy.github.io/bash_lab4/v1.0.0/</p>
     </div>
 
     <script>
@@ -98,11 +112,10 @@
                 }
             } catch (error) {
                 document.getElementById('versions-list').innerHTML = 
-                    '<p>Ошибка загрузки списка версий. Убедитесь что репозиторий публичный.</p>';
+                    '<p>Ошибка загрузки списка версий</p>';
             }
         }
         
-        // Загружаем список версий при открытии страницы
         document.addEventListener('DOMContentLoaded', loadReleases);
     </script>
 </body>

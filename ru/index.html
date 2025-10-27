@@ -1,8 +1,8 @@
 ﻿<!DOCTYPE html>
-<html lang=\"ru\">
+<html lang="ru">
 <head>
-    <meta charset=\"UTF-8\">
-    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Русская версия - Лабораторная работа</title>
     <style>
         body {
@@ -30,30 +30,20 @@
             border-radius: 5px;
             margin: 20px 0;
         }
-        .version-info {
-            background: #e7f3ff;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 15px 0;
-        }
     </style>
 </head>
 <body>
     <nav>
-        <a href=\"../index.html\">Главная</a>
-        <a href=\"index.html\">Русская версия</a>
-        <a href=\"../en/index.html\">English Version</a>
+        <a href="/bash_lab4/index.html">Главная</a>
+        <a href="/bash_lab4/ru/index.html">Русская версия</a>
+        <a href="/bash_lab4/en/index.html">English Version</a>
     </nav>
     
     <h1>Русскоязычная версия сайта</h1>
     
-    <div class=\"version-info\">
-        <strong>Версия:</strong> <span id=\"version\">v1.0.0</span>
-    </div>
-    
     <p>Это русская версия веб-приложения для лабораторной работы по настройке CI/CD на GitHub Pages.</p>
     
-    <div class=\"task-list\">
+    <div class="task-list">
         <h2>Задачи лабораторной работы:</h2>
         <ul>
             <li>Создать многоязычный сайт</li>
@@ -62,13 +52,5 @@
             <li>Обеспечить версионирование</li>
         </ul>
     </div>
-    
-    <script>
-        const path = window.location.pathname;
-        const versionMatch = path.match(/v(\d+\.\d+\.\d+)/);
-        if (versionMatch) {
-            document.getElementById('version').textContent = versionMatch[0];
-        }
-    </script>
 </body>
 </html>
