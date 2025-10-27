@@ -1,9 +1,9 @@
 ﻿<!DOCTYPE html>
-<html lang="ru">
+<html lang=\"ru\">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Русская версия</title>
+    <meta charset=\"UTF-8\">
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+    <title>Русская версия - Лабораторная работа</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -24,18 +24,50 @@
             color: #0366d6;
             font-weight: bold;
         }
+        .task-list {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .version-info {
+            background: #e7f3ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
     </style>
 </head>
 <body>
     <nav>
-        <a href="../index.html">Главная</a>
-        <a href="index.html">Русская версия</a>
-        <a href="../en/index.html">English Version</a>
+        <a href=\"../index.html\">Главная</a>
+        <a href=\"index.html\">Русская версия</a>
+        <a href=\"../en/index.html\">English Version</a>
     </nav>
     
     <h1>Русскоязычная версия сайта</h1>
-    <p>Это русская версия веб-приложения.</p>
-    <p>Версия: <strong id="version">v1.0.0</strong></p>
+    
+    <div class=\"version-info\">
+        <strong>Версия:</strong> <span id=\"version\">v1.0.0</span>
+    </div>
+    
+    <p>Это русская версия веб-приложения для лабораторной работы по настройке CI/CD на GitHub Pages.</p>
+    
+    <div class=\"task-list\">
+        <h2>Задачи лабораторной работы:</h2>
+        <ul>
+            <li>Создать многоязычный сайт</li>
+            <li>Настроить GitHub Pages</li>
+            <li>Реализовать CI/CD пайплайн</li>
+            <li>Обеспечить версионирование</li>
+        </ul>
+    </div>
+    
+    <h2>Текущий статус:</h2>
+    <p>✅ Создана структура многоязычного сайта</p>
+    <p>🔄 Настройка GitHub Pages в процессе...</p>
+    <p>🔄 CI/CD пайплайн добавлен</p>
+    <p>⏳ Версионирование будет тестироваться при создании релиза</p>
     
     <script>
         const path = window.location.pathname;
