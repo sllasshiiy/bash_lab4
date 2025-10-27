@@ -1,8 +1,8 @@
 ﻿<!DOCTYPE html>
-<html lang=\"ru\">
+<html lang="ru">
 <head>
-    <meta charset=\"UTF-8\">
-    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Лабораторная работа 4 - GitHub Pages</title>
     <style>
         body {
@@ -47,15 +47,15 @@
 </head>
 <body>
     <nav>
-        <a href=\"index.html\">Главная</a>
-        <a href=\"ru/index.html\">Русская версия</a>
-        <a href=\"en/index.html\">English Version</a>
-        <a href=\"#versions\">Все версии</a>
+        <a href="index.html">Главная</a>
+        <a href="ru/index.html">Русская версия</a>
+        <a href="en/index.html">English Version</a>
+        <a href="#versions">Все версии</a>
     </nav>
     
     <h1>Лабораторная работа 4: GitHub Pages + CI/CD</h1>
     
-    <div class=\"task-list\">
+    <div class="task-list">
         <h2>Задачи лабораторной работы:</h2>
         <ol>
             <li>Создать русскоязычную версию сайта (ru/index.html)</li>
@@ -67,10 +67,10 @@
         </ol>
     </div>
     
-    <div class=\"versions-section\">
-        <h2 id=\"versions\"> Доступные версии сайта</h2>
+    <div class="versions-section">
+        <h2 id="versions">Доступные версии сайта</h2>
         <p>Каждая версия сохраняется в отдельной папке и остается доступной:</p>
-        <div id=\"versions-list\">
+        <div id="versions-list">
             <p>Загрузка списка версий...</p>
         </div>
         <p><strong>Формат URL:</strong> https://sllasshiiy.github.io/bash_lab4/v1.0.0/</p>
@@ -87,11 +87,11 @@
                 
                 if (releases && releases.length > 0) {
                     versionsList.innerHTML = releases.map(release => 
-                        <div class=\"version-item\">
-                            <strong>🔖 <a href=\"/bash_lab4//\"></a></strong><br>
-                            <em></em><br>
-                            📅 
-                        </div>
+                        '<div class="version-item">' +
+                        '<strong><a href="/bash_lab4/' + release.tag_name + '/">' + release.tag_name + '</a></strong><br>' +
+                        '<em>' + (release.name || 'Без названия') + '</em><br>' +
+                        'Дата: ' + new Date(release.published_at).toLocaleDateString('ru-RU') +
+                        '</div>'
                     ).join('');
                 } else {
                     versionsList.innerHTML = '<p>Пока нет созданных релизов. Создайте первый релиз в GitHub!</p>';
